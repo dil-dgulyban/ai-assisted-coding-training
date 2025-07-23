@@ -1,11 +1,16 @@
 import './App.css'
+import { CssBaseline } from '@mui/material'
+import { AtlasThemeProvider } from './providers/ThemeProvider'
 
 function App() {
   return (
-    <div className="app-container">
-      <h1>Todo App</h1>
-      {/* App content will go here in future tasks */}
-    </div>
+    <AtlasThemeProvider>
+      <CssBaseline />
+      <div className="app-container">
+        <h1>Todo App</h1>
+        {/* App content will go here in future tasks */}
+      </div>
+    </AtlasThemeProvider>
   )
 }
 
