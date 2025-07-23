@@ -4,7 +4,7 @@
 | # | Task | Status | Dependencies |
 |---|------|--------|-------------|
 | 1 | Set up React project with required dependencies in a temp subfolder, then copy to current folder | DONE | None |
-| 2 | Configure Atlas UI components and styling | TODO | 1 |
+| 2 | Configure Atlas UI components and styling | DONE | 1 |
 | 3 | Create basic app structure with responsive layout | TODO | 2 |
 | 4 | Implement todo state management | TODO | 3 |
 | 5 | Create todo list component | TODO | 4 |
