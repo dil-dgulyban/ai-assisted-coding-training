@@ -28,7 +28,7 @@ describe('Layout Components', () => {
 
   test('App renders with proper layout structure', () => {
     render(<App />);
-    expect(screen.getByText('Todo App')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 1, name: /todo app/i })).toBeInTheDocument();
     expect(screen.getByText('Your Todos')).toBeInTheDocument();
     expect(screen.getByText('Todo items will appear here soon.')).toBeInTheDocument();
     
