@@ -6,21 +6,21 @@ export const Header: React.FC = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
 
   return (
-    <AppBar 
-      position="static" 
+    <AppBar
+      position="static"
       elevation={0}
       sx={{
-        backgroundColor: theme.palette.primary.main
+        backgroundColor: theme.palette.primary.main,
       }}
     >
       <Toolbar>
-        <Typography 
-          variant={isMobile ? "h6" : "h5"} 
+        <Typography
+          variant={isMobile ? 'h6' : 'h5'}
           component="h1"
-          sx={{ 
+          sx={{
             fontWeight: 500,
             flexGrow: 1,
-            textAlign: 'center'
+            textAlign: 'center',
           }}
         >
           Todo App

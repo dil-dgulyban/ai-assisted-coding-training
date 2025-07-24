@@ -1,9 +1,4 @@
 {
-  "*.{js,jsx,ts,tsx}": [
-    "npm run lint -- --fix",
-    "npm run format"
-  ],
-  "*.{json,css,md}": [
-    "npm run format"
-  ]
+  "*.{js,jsx,ts,tsx}": ["npm run lint -- --fix", "npm run format"],
+  "*.{json,css,md}": ["npm run format"]
 }

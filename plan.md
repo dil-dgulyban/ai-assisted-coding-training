@@ -1,23 +1,26 @@
 # Plan: Create a TODO App with Atlas UI
 
 ## Task Overview
-| # | Task | Status | Dependencies |
-|---|------|--------|-------------|
-| 1 | Set up React project with required dependencies in a temp subfolder, then copy to current folder | DONE   | None |
-| 2 | Configure Atlas UI components and styling | DONE   | 1 |
-| 3 | Create basic app structure with responsive layout | DONE   | 2 |
-| 4 | Implement todo state management | DONE   | 3 |
-| 5 | Create todo list component | DONE   | 4 |
-| 6 | Design and implement modal component for todos | DONE   | 4 |
-| 7 | Implement create todo functionality | DONE   | 5, 6 |
-| 8 | Implement edit todo functionality | IGNORE | 7 |
+
+| #   | Task                                                                                             | Status | Dependencies |
+| --- | ------------------------------------------------------------------------------------------------ | ------ | ------------ |
+| 1   | Set up React project with required dependencies in a temp subfolder, then copy to current folder | DONE   | None         |
+| 2   | Configure Atlas UI components and styling                                                        | DONE   | 1            |
+| 3   | Create basic app structure with responsive layout                                                | DONE   | 2            |
+| 4   | Implement todo state management                                                                  | DONE   | 3            |
+| 5   | Create todo list component                                                                       | DONE   | 4            |
+| 6   | Design and implement modal component for todos                                                   | DONE   | 4            |
+| 7   | Implement create todo functionality                                                              | DONE   | 5, 6         |
+| 8   | Implement edit todo functionality                                                                | IGNORE | 7            |
 
 ## Context
+
 User request: "Create a TODO app with Atlas UI components that allows users to list, add, and edit todos with a modal interface."
 
 This TODO app is part of an AI assisted coding workshop to demonstrate how to create a modern React application with Atlas UI components. The application will be purely frontend, focusing on responsive design and proper component architecture.
 
 Requirements:
+
 - Frontend-only React application using Vite
 - Atlas UI components from Diligent MCP
 - Responsive design for all screen sizes
@@ -31,12 +34,14 @@ Requirements:
 ## Task List
 
 ### Task 1: Set up React project with required dependencies in a temp subfolder, then copy to current folder
+
 **Description**:
 Create a new React application using Vite in a temporary subfolder. Set up TypeScript for type safety. Install Atlas UI components and React Testing Library for automated testing. Then copy the project files to the repository root.
 
 Configure the project structure with separate directories for components, contexts, types, and tests. Set up initial configuration files including tsconfig.json, vite.config.ts, and testing configuration.
 
 Code Snippets:
+
 ```bash
 # Project initialization in temporary subfolder
 mkdir temp-project
@@ -83,6 +88,7 @@ test('App renders without crashing', () => {
 ```
 
 **Verification**:
+
 - Project structure is created in temporary subfolder with all necessary directories
 - All dependencies are correctly installed
 - TypeScript is properly configured
@@ -91,10 +97,12 @@ test('App renders without crashing', () => {
 - Files are successfully copied to the repository root
 
 ### Task 2: Configure Atlas UI components and styling
+
 **Description**:
 Set up Atlas UI configuration including the prebuilt "Lens" theme provider and required CSS imports. Configure responsive layout breakpoints to ensure the application works on different device sizes.
 
 Code Snippets:
+
 ```tsx
 // src/providers/ThemeProvider.tsx
 import React from 'react';
@@ -106,11 +114,7 @@ interface AtlasThemeProviderProps {
 }
 
 export const AtlasThemeProvider: React.FC<AtlasThemeProviderProps> = ({ children }) => {
-  return (
-    <ThemeProvider theme={lensTheme}>
-      {children}
-    </ThemeProvider>
-  );
+  return <ThemeProvider theme={lensTheme}>{children}</ThemeProvider>;
 };
 ```
 
@@ -153,16 +157,19 @@ test('Theme provider renders children correctly', () => {
 ```
 
 **Verification**:
+
 - Atlas UI components render with correct Lens theme styling
 - Theme provider is properly configured
 - Responsive breakpoints work correctly across different screen sizes
 - All theme-related tests pass
 
 ### Task 3: Create basic app structure with responsive layout
+
 **Description**:
 Create the main layout components for the application including header, content area, and container structure. Implement responsive styling to ensure proper display on different devices.
 
 Code Snippets:
+
 ```tsx
 // src/components/Layout/Header.tsx
 import React from 'react';
@@ -217,21 +224,24 @@ test('Header renders correctly', () => {
   expect(screen.getByText('Todo App')).toBeInTheDocument();
 });
 
-// Additional tests for responsive behavior would use 
+// Additional tests for responsive behavior would use
 // window resizing and check computed styles
 ```
 
 **Verification**:
+
 - Basic app layout renders correctly
 - Layout is responsive on different screen sizes
 - Components maintain proper styling across devices
 - All layout tests pass
 
 ### Task 4: Implement todo state management
+
 **Description**:
 Create a state management solution using React Context API to handle the todo items. Define the Todo data model with proper TypeScript types. Implement functions for adding todos (and prepare for future editing and marking as complete).
 
 Code Snippets:
+
 ```typescript
 // src/types/Todo.ts
 export interface Todo {
@@ -259,7 +269,7 @@ const TodoContext = createContext<TodoContextType | undefined>(undefined);
 
 export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  
+
   const addTodo = (title: string, description: string) => {
     const newTodo: Todo = {
       id: uuidv4(),
@@ -270,7 +280,7 @@ export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
     setTodos([...todos, newTodo]);
   };
-  
+
   return (
     <TodoContext.Provider value={{ todos, addTodo }}>
       {children}
@@ -297,7 +307,7 @@ import { TodoProvider, useTodo } from '../contexts/TodoContext';
 
 const TestComponent = () => {
   const { todos, addTodo } = useTodo();
-  
+
   return (
     <div>
       <button onClick={() => addTodo('Test Todo', 'Test Description')}>
@@ -314,28 +324,31 @@ test('TodoProvider manages todo state correctly', () => {
       <TestComponent />
     </TodoProvider>
   );
-  
+
   expect(getByTestId('todo-count').textContent).toBe('0');
-  
+
   act(() => {
     getByText('Add Todo').click();
   });
-  
+
   expect(getByTestId('todo-count').textContent).toBe('1');
 });
 ```
 
 **Verification**:
+
 - Todo context properly manages state
 - Add todo functionality works correctly
 - State is accessible throughout the application
 - All context tests pass
 
 ### Task 5: Create todo list component
+
 **Description**:
 Create a component to display the list of todos. Show each todo item with its title, description, and completion status. Display an appropriate empty state when no todos exist.
 
 Code Snippets:
+
 ```tsx
 // src/components/TodoList/TodoList.tsx
 import React from 'react';
@@ -359,7 +372,7 @@ export const TodoList: React.FC = () => {
   return (
     <Paper sx={{ mt: 3 }}>
       <List>
-        {todos.map((todo) => (
+        {todos.map(todo => (
           <TodoItem key={todo.id} todo={todo} />
         ))}
       </List>
@@ -382,10 +395,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
   return (
     <>
       <ListItem>
-        <ListItemText 
-          primary={todo.title} 
-          secondary={todo.description} 
-        />
+        <ListItemText primary={todo.title} secondary={todo.description} />
       </ListItem>
       <Divider />
     </>
@@ -420,7 +430,7 @@ test('TodoList renders todo items when todos exist', () => {
       ]
     })
   }));
-  
+
   render(<TodoList />);
   expect(screen.getByText('Test Todo')).toBeInTheDocument();
   expect(screen.getByText('Test Description')).toBeInTheDocument();
@@ -428,27 +438,30 @@ test('TodoList renders todo items when todos exist', () => {
 ```
 
 **Verification**:
+
 - Todo list renders correctly
 - Empty state is displayed when no todos exist
 - Todo items display correctly with all information
 - All list component tests pass
 
 ### Task 6: Design and implement modal component for todos
+
 **Description**:
 Create a reusable modal component using MUI's Dialog component with Atlas Lens styling. Implement a form for entering todo details (title and description) with proper validation.
 
 Code Snippets:
+
 ```tsx
 // src/components/TodoModal/TodoModal.tsx
 import React, { useState } from 'react';
-import { 
-  Dialog, 
-  DialogTitle, 
-  DialogContent, 
-  DialogActions, 
-  Button, 
-  TextField, 
-  Box 
+import {
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogActions,
+  Button,
+  TextField,
+  Box,
 } from '@mui/material';
 import { useTodo } from '../../contexts/TodoContext';
 
@@ -473,9 +486,9 @@ export const TodoModal: React.FC<TodoModalProps> = ({ isOpen, onClose }) => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!validateForm()) return;
-    
+
     addTodo(title.trim(), description.trim());
     onClose();
     // Reset form
@@ -485,12 +498,7 @@ export const TodoModal: React.FC<TodoModalProps> = ({ isOpen, onClose }) => {
   };
 
   return (
-    <Dialog 
-      open={isOpen} 
-      onClose={onClose}
-      fullWidth
-      maxWidth="sm"
-    >
+    <Dialog open={isOpen} onClose={onClose} fullWidth maxWidth="sm">
       <DialogTitle>Create Todo</DialogTitle>
       <form onSubmit={handleSubmit}>
         <DialogContent>
@@ -498,7 +506,7 @@ export const TodoModal: React.FC<TodoModalProps> = ({ isOpen, onClose }) => {
             <TextField
               label="Title"
               value={title}
-              onChange={(e) => {
+              onChange={e => {
                 setTitle(e.target.value);
                 if (e.target.value.trim()) setTitleError('');
               }}
@@ -510,7 +518,7 @@ export const TodoModal: React.FC<TodoModalProps> = ({ isOpen, onClose }) => {
             <TextField
               label="Description"
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={e => setDescription(e.target.value)}
               fullWidth
               multiline
               rows={4}
@@ -544,7 +552,7 @@ test('TodoModal renders correctly when open', () => {
       <TodoModal isOpen={true} onClose={() => {}} />
     </TodoProvider>
   );
-  
+
   expect(screen.getByText('Create Todo')).toBeInTheDocument();
   expect(screen.getByLabelText('Title')).toBeInTheDocument();
   expect(screen.getByLabelText('Description')).toBeInTheDocument();
@@ -558,22 +566,25 @@ test('TodoModal does not render when closed', () => {
       <TodoModal isOpen={false} onClose={() => {}} />
     </TodoProvider>
   );
-  
+
   expect(screen.queryByText('Create Todo')).not.toBeInTheDocument();
 });
 ```
 
 **Verification**:
+
 - Modal opens and closes correctly
 - Form displays with proper fields
 - Form validation works correctly
 - All modal component tests pass
 
 ### Task 7: Implement create todo functionality
+
 **Description**:
 Connect the modal component with the todo state management to implement the complete create todo functionality. Add a button to open the modal and create new todos.
 
 Code Snippets:
+
 ```tsx
 // src/components/CreateTodoButton/CreateTodoButton.tsx
 import React, { useState } from 'react';
@@ -586,19 +597,16 @@ export const CreateTodoButton: React.FC = () => {
 
   return (
     <>
-      <Button 
-        variant="contained" 
+      <Button
+        variant="contained"
         color="primary"
         startIcon={<AddCircleIcon />}
         onClick={() => setIsModalOpen(true)}
       >
         Create Todo
       </Button>
-      
-      <TodoModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+
+      <TodoModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
     </>
   );
 };
@@ -652,23 +660,23 @@ test('Complete create todo flow works correctly', async () => {
       <App />
     </TodoProvider>
   );
-  
+
   // Initially should show empty state
   expect(screen.getByText(/No todos yet/i)).toBeInTheDocument();
-  
+
   // Click create button
   await user.click(screen.getByText('Create Todo'));
-  
+
   // Modal should appear
   expect(screen.getByText('Create Todo')).toBeInTheDocument();
-  
+
   // Fill in the form
   await user.type(screen.getByLabelText('Title'), 'Test Todo');
   await user.type(screen.getByLabelText('Description'), 'This is a test todo');
-  
+
   // Submit the form
   await user.click(screen.getByText('Create'));
-  
+
   // Modal should close and todo should appear in the list
   await waitFor(() => {
     expect(screen.queryByText('Create Todo')).not.toBeInTheDocument();
@@ -679,16 +687,19 @@ test('Complete create todo flow works correctly', async () => {
 ```
 
 **Verification**:
+
 - Create button opens the modal correctly
 - Form submission creates a new todo
 - New todo appears in the list after creation
 - All integration tests for the create flow pass
 
 ### Task 8: Implement edit todo functionality
+
 **Description**:
 Implement the ability to edit existing todo items by clicking on them. Extend the modal component to handle both create and edit modes. Update the todo context to include an edit function. Make todo items clickable to open the edit modal with pre-filled data.
 
 Code Snippets:
+
 ```typescript
 // Update TodoContext.tsx to include edit functionality
 interface TodoContextType {
@@ -699,9 +710,7 @@ interface TodoContextType {
 
 // Inside TodoProvider:
 const editTodo = (id: string, updates: Partial<Todo>) => {
-  setTodos(todos.map(todo => 
-    todo.id === id ? { ...todo, ...updates } : todo
-  ));
+  setTodos(todos.map(todo => (todo.id === id ? { ...todo, ...updates } : todo)));
 };
 ```
 
@@ -718,16 +727,16 @@ interface TodoModalProps {
   };
 }
 
-export const TodoModal: React.FC<TodoModalProps> = ({ 
-  isOpen, 
-  onClose, 
+export const TodoModal: React.FC<TodoModalProps> = ({
+  isOpen,
+  onClose,
   mode = 'create',
-  initialValues
+  initialValues,
 }) => {
   const { addTodo, editTodo } = useTodo();
   const [title, setTitle] = useState(initialValues?.title || '');
   const [description, setDescription] = useState(initialValues?.description || '');
-  
+
   // Reset form or load values when modal opens
   useEffect(() => {
     if (isOpen) {
@@ -743,13 +752,13 @@ export const TodoModal: React.FC<TodoModalProps> = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (mode === 'create') {
       addTodo(title.trim(), description.trim());
     } else if (mode === 'edit' && initialValues) {
-      editTodo(initialValues.id, { 
-        title: title.trim(), 
-        description: description.trim() 
+      editTodo(initialValues.id, {
+        title: title.trim(),
+        description: description.trim(),
       });
     }
     onClose();
@@ -757,24 +766,22 @@ export const TodoModal: React.FC<TodoModalProps> = ({
 
   return (
     <Dialog open={isOpen} onClose={onClose}>
-      <DialogTitle>
-        {mode === 'create' ? 'Create Todo' : 'Edit Todo'}
-      </DialogTitle>
-      
+      <DialogTitle>{mode === 'create' ? 'Create Todo' : 'Edit Todo'}</DialogTitle>
+
       <form onSubmit={handleSubmit}>
         <DialogContent>
           <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
             <TextField
               label="Title"
               value={title}
-              onChange={(e) => setTitle(e.target.value)}
+              onChange={e => setTitle(e.target.value)}
               fullWidth
               required
             />
             <TextField
               label="Description"
               value={description}
-              onChange={(e) => setDescription(e.target.value)}
+              onChange={e => setDescription(e.target.value)}
               fullWidth
               multiline
               rows={4}
@@ -800,18 +807,11 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
 
   return (
     <>
-      <ListItem 
-        button 
-        onClick={() => setIsModalOpen(true)}
-        sx={{ cursor: 'pointer' }}
-      >
-        <ListItemText 
-          primary={todo.title} 
-          secondary={todo.description} 
-        />
+      <ListItem button onClick={() => setIsModalOpen(true)} sx={{ cursor: 'pointer' }}>
+        <ListItemText primary={todo.title} secondary={todo.description} />
       </ListItem>
       <Divider />
-      
+
       <TodoModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
@@ -819,7 +819,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo }) => {
         initialValues={{
           id: todo.id,
           title: todo.title,
-          description: todo.description
+          description: todo.description,
         }}
       />
     </>
@@ -854,10 +854,10 @@ test('Todo items are clickable and open edit modal', async () => {
       <TodoItem todo={mockTodo} />
     </TodoProvider>
   );
-  
+
   // Click the todo item
   await user.click(screen.getByText('Test Todo'));
-  
+
   // Modal should appear with the todo data pre-filled
   expect(screen.getByText('Edit Todo')).toBeInTheDocument();
   expect(screen.getByDisplayValue('Test Todo')).toBeInTheDocument();
@@ -868,14 +868,14 @@ test('Edit modal updates todo when submitted', async () => {
   const user = userEvent.setup();
   // Create a mock for the editTodo function
   const mockEditTodo = jest.fn();
-  
+
   // Mock the context with our custom function
   jest.mock('../contexts/TodoContext', () => ({
     useTodo: () => ({
       editTodo: mockEditTodo
     })
   }));
-  
+
   render(
     <TodoModal
       isOpen={true}
@@ -888,17 +888,17 @@ test('Edit modal updates todo when submitted', async () => {
       }}
     />
   );
-  
+
   // Change the values
   await user.clear(screen.getByDisplayValue('Test Todo'));
   await user.type(screen.getByLabelText('Title'), 'Updated Todo');
-  
+
   await user.clear(screen.getByDisplayValue('Original description'));
   await user.type(screen.getByLabelText('Description'), 'Updated description');
-  
+
   // Submit the form
   await user.click(screen.getByText('Save'));
-  
+
   // Check that editTodo was called with the right arguments
   expect(mockEditTodo).toHaveBeenCalledWith('123', {
     title: 'Updated Todo',
@@ -908,6 +908,7 @@ test('Edit modal updates todo when submitted', async () => {
 ```
 
 **Verification**:
+
 - Todo items are clickable and open the edit modal
 - Edit modal is pre-filled with existing todo data
 - Submitting edited todo updates the item in the list

@@ -38,12 +38,12 @@ describe('ThemeProvider', () => {
         <TestComponent />
       </AtlasThemeProvider>
     );
-    
+
     // Check if theme values are available
     expect(screen.getByTestId('primary-color')).toHaveStyle('color: #1976d2');
     expect(screen.getByTestId('typography-h1')).toBeInTheDocument();
     expect(screen.getByTestId('typography-body1')).toBeInTheDocument();
-    
+
     // Check responsive breakpoints
     expect(screen.getByTestId('breakpoint-sm').textContent).toBe('600');
     expect(screen.getByTestId('breakpoint-md').textContent).toBe('960');

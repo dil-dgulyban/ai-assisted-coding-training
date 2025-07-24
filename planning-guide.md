@@ -1,17 +1,20 @@
 # Planning Guide Reference
 
 ## Purpose
+
 This document provides a standardized approach for creating effective plan.md files for both AI and human developers. Following this guide ensures consistent planning, execution, and verification of any development task.
 
 ## Planning Process
 
 ### 1. Creating the Plan File
+
 - Create a new file named `plan.md` in the repository root
 - Use this as the single source of truth for planning and execution
 - Always start by adding a descriptive title for the plan at the top
 - Use Markdown formatting for clear structure and readability
 
 ### 2. Gather Context and Information
+
 - Collect all user requirements and project context
 - Extract relevant details from CLAUDE.md repository index
 - Identify related components in the repository
@@ -19,12 +22,14 @@ This document provides a standardized approach for creating effective plan.md fi
 - Document this information in the Context section of plan.md
 
 ### 3. Create Task List
+
 - Break down the solution into discrete, manageable tasks
 - Order tasks logically with dependencies clearly marked
 - Present task list to user for review and refinement
 - Iterate based on feedback until approved
 
 ### 4. Define Execution Strategy
+
 - Document the step-by-step execution approach
 - Include verification methods for each task
 - Address potential risks and alternative approaches
@@ -33,6 +38,7 @@ This document provides a standardized approach for creating effective plan.md fi
 ## Plan.md Structure
 
 ### Context
+
 - Original user request (verbatim)
 - Additional clarifications from discussion
 - Related system components and architecture
@@ -40,9 +46,10 @@ This document provides a standardized approach for creating effective plan.md fi
 - References to relevant documentation
 
 ### Task List
+
 Structured as a series of tasks with consistent format:
 
-```
+````
 ## Task 1: [Title]
 **Status**: [TODO | IN-PROGRESS | DONE]
 **Depends On**: [List of task numbers or "None"]
@@ -53,14 +60,16 @@ Structured as a series of tasks with consistent format:
 ```[language]
 // Example code structure or pattern to follow
 // Include only when applicable to make implementation clearer
-```
+````
 
 **Verification**:
 [Specific steps to verify this task was completed successfully]
+
 ```
 
 ### Execution Guide
 ```
+
 Execution process:
 
 1. Pick the next task that is not in progress and has all dependencies marked as DONE.
@@ -73,6 +82,7 @@ Execution process:
    d. Set status to DONE when verified successfully
 
 3. Continue to the next eligible task until all tasks are completed.
+
 ```
 
 ## Task Best Practices
@@ -119,9 +129,11 @@ When a user requests assistance with a task, follow these steps to create a plan
 
 ### Example: Feature Implementation
 ```
+
 # Plan: Add User Profile Export Feature
 
 ## Context
+
 User request: "Add the ability for users to export their profile data in PDF format"
 The profile page is in frontend/src/pages/Profile/index.tsx
 Profile data is fetched from /api/users/{id}/profile
@@ -130,6 +142,7 @@ We have an existing PDF generation utility at utils/pdf-generator.js
 ## Task List
 
 ### Task 1: Create PDF Template Design
+
 Status: TODO
 Depends On: None
 Description:
@@ -141,6 +154,7 @@ Template file exists and follows project style guidelines
 Template includes all required user profile fields
 
 ### Task 2: Add Backend Export Endpoint
+
 Status: TODO
 Depends On: None
 Description:
@@ -154,6 +168,7 @@ Endpoint returns appropriate error codes for invalid requests
 Manually verify PDF content matches the template design
 
 ### Task 3: Add Export Button to Profile Page
+
 Status: TODO
 Depends On: None
 Description:
@@ -166,6 +181,7 @@ Button appears correctly on desktop and mobile layouts
 Button matches design system styling
 
 ### Task 4: Implement Frontend Export Functionality
+
 Status: TODO
 Depends On: [2, 3]
 Description:
@@ -181,6 +197,7 @@ Error messages display appropriately
 PDF downloads successfully when complete
 
 ## Execution Guide
+
 1. Pick the next task that is not in progress and has all dependencies marked as DONE.
    If multiple tasks are eligible, pick the first one in the list.
 
@@ -191,16 +208,20 @@ PDF downloads successfully when complete
    d. Set status to DONE when verified successfully
 
 3. Continue to the next eligible task until all tasks are completed.
+
 ```
 
 ### Example: Bug Fix
 ```
+
 # Plan: Fix Workflow State Transition Error
 
 ## Context
+
 User request: "Fix bug RCP-24670: Cannot discard issues with sequential workflow"
 Error message: "Action cannot be transitioned from action-pending to action-discarded"
 Reproduction steps:
+
 1. Create issue with sequential workflow
 2. Try to discard it from action-pending state
 3. Error appears preventing the transition
@@ -211,6 +232,7 @@ Transition rules are defined in backend/src/workflows/transitions.js
 ## Task List
 
 ### Task 1: Investigate Workflow Definition
+
 Status: TODO
 Depends On: None
 Description:
@@ -223,6 +245,7 @@ Confirm understanding of current workflow configuration
 Identify specific issue preventing the transition
 
 ### Task 2: Implement Fix for Transition Rule
+
 Status: TODO
 Depends On: [1]
 Description:
@@ -231,19 +254,20 @@ Follow existing pattern for similar transitions
 Ensure no side effects for other workflow states
 
 Code Snippets:
+
 ```javascript
 // Before:
 const allowedTransitions = {
   'action-pending': ['action-complete', 'action-in-progress'],
   'action-in-progress': ['action-complete', 'action-pending'],
-  'action-complete': ['action-pending']
+  'action-complete': ['action-pending'],
 };
 
 // After:
 const allowedTransitions = {
   'action-pending': ['action-complete', 'action-in-progress', 'action-discarded'], // Add action-discarded as allowed transition
   'action-in-progress': ['action-complete', 'action-pending'],
-  'action-complete': ['action-pending']
+  'action-complete': ['action-pending'],
 };
 ```
 
@@ -252,13 +276,15 @@ Code changes follow project conventions
 Unit tests pass after changes
 
 ### Task 3: Verify Fix in Frontend
+
 Status: TODO
 Depends On: [2]
 Description:
 Use Playwright to reproduce the original issue:
+
 - Create issue with sequential workflow
 - Try to discard it from action-pending state
-Verify the transition now succeeds without error
+  Verify the transition now succeeds without error
 
 Verification:
 Playwright test completes successfully
@@ -266,6 +292,7 @@ No error messages appear during transition
 Issue correctly moves to discarded state
 
 ## Execution Guide
+
 1. Pick the next task that is not in progress and has all dependencies marked as DONE.
    If multiple tasks are eligible, pick the first one in the list.
 
@@ -276,4 +303,7 @@ Issue correctly moves to discarded state
    d. Set status to DONE when verified successfully
 
 3. Continue to the next eligible task until all tasks are completed.
+
+```
+
 ```

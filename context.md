@@ -1,11 +1,13 @@
 # AI Assisted Coding Workshop - TODO App Project
 
 ## Confluence Links
+
 - [AI Assisted coding training](https://diligentbrands.atlassian.net/wiki/spaces/~712020923731ed2d794052a4e6abbe10605cb6/pages/5701829028/AI+Assisted+coding+training)
 - [AI Assisted Coding - Presentation](https://diligentbrands.atlassian.net/wiki/spaces/~712020923731ed2d794052a4e6abbe10605cb6/pages/5701534481/AI+Assisted+Coding+-+Presentation)
 - [Prerequisites](https://diligentbrands.atlassian.net/wiki/spaces/~712020923731ed2d794052a4e6abbe10605cb6/pages/5702713353/Prerequisites)
 
 ## Project Overview
+
 This is the main repository for the AI assisted coding workshop. We need to create a TODO app with the following specifications:
 
 - Frontend-only React application
@@ -18,6 +20,7 @@ This is the main repository for the AI assisted coding workshop. We need to crea
   - Use the same modal component for both create and edit operations
 
 ## Implementation Plan
+
 - Create a plan based on the planning-guide
 - Set up the project as a React app using Vite
 - Implement up to the create functionality
@@ -26,6 +29,7 @@ This is the main repository for the AI assisted coding workshop. We need to crea
 Students will work with a plan that has been executed up to task list and create functionality. They will then create a new plan based on the planning guide to implement what's in a Jira task.
 
 ## Technical Requirements
+
 - Use Vite for project setup
 - Use Atlas UI components (explore available components via MCP)
 - Use in-memory state only for simplicity

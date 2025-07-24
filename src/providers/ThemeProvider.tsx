@@ -1,9 +1,5 @@
 import React from 'react';
-import { 
-  ThemeProvider as MuiThemeProvider, 
-  createTheme, 
-  responsiveFontSizes 
-} from '@mui/material';
+import { ThemeProvider as MuiThemeProvider, createTheme, responsiveFontSizes } from '@mui/material';
 
 // Mock for the Atlas Lens theme with responsive configuration
 const createLensTheme = () => {
@@ -89,10 +85,10 @@ const createLensTheme = () => {
       },
     },
   });
-  
+
   // Apply responsive font sizes
   theme = responsiveFontSizes(theme);
-  
+
   return theme;
 };
 
@@ -104,9 +100,5 @@ interface AtlasThemeProviderProps {
 }
 
 export const AtlasThemeProvider: React.FC<AtlasThemeProviderProps> = ({ children }) => {
-  return (
-    <MuiThemeProvider theme={lensTheme}>
-      {children}
-    </MuiThemeProvider>
-  );
+  return <MuiThemeProvider theme={lensTheme}>{children}</MuiThemeProvider>;
 };

@@ -20,7 +20,7 @@ describe('Layout Components', () => {
         <Footer />
       </AtlasThemeProvider>
     );
-    
+
     // Check if the footer contains the current year
     const currentYear = new Date().getFullYear().toString();
     expect(screen.getByText(`Todo App - ${currentYear}`)).toBeInTheDocument();
@@ -31,7 +31,7 @@ describe('Layout Components', () => {
     expect(screen.getByRole('heading', { level: 1, name: /todo app/i })).toBeInTheDocument();
     expect(screen.getByText('Your Todos')).toBeInTheDocument();
     expect(screen.getByText(/No todos yet/i)).toBeInTheDocument();
-    
+
     // Check if main elements exist
     expect(screen.getByRole('banner')).toBeInTheDocument(); // AppBar/Header
     expect(screen.getByRole('main')).toBeInTheDocument(); // Main content area

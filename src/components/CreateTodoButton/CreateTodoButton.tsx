@@ -26,11 +26,7 @@ export const CreateTodoButton: React.FC = () => {
         </Button>
       </Box>
 
-      <TodoModal
-        isOpen={isModalOpen}
-        onClose={handleCloseModal}
-        mode="create"
-      />
+      <TodoModal isOpen={isModalOpen} onClose={handleCloseModal} mode="create" />
     </>
   );
 };
