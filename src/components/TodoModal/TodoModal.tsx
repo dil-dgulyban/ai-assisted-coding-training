@@ -104,7 +104,9 @@ export const TodoModal: React.FC<TodoModalProps> = ({
               error={!!titleError}
               helperText={titleError}
               autoFocus
-              inputProps={{ 'data-testid': 'title-input' }}
+              inputProps={
+                { 'data-testid': 'title-input' } as React.InputHTMLAttributes<HTMLInputElement>
+              }
             />
             <TextField
               label="Description"
@@ -113,7 +115,11 @@ export const TodoModal: React.FC<TodoModalProps> = ({
               fullWidth
               multiline
               rows={4}
-              inputProps={{ 'data-testid': 'description-input' }}
+              inputProps={
+                {
+                  'data-testid': 'description-input',
+                } as React.InputHTMLAttributes<HTMLInputElement>
+              }
             />
             {mode === 'edit' && (
               <FormControlLabel
@@ -121,7 +127,11 @@ export const TodoModal: React.FC<TodoModalProps> = ({
                   <Checkbox
                     checked={completed}
                     onChange={e => setCompleted(e.target.checked)}
-                    inputProps={{ 'data-testid': 'completed-checkbox' }}
+                    inputProps={
+                      {
+                        'data-testid': 'completed-checkbox',
+                      } as React.InputHTMLAttributes<HTMLInputElement>
+                    }
                   />
                 }
                 label="Mark as completed"
