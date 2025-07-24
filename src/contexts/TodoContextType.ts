@@ -1,3 +1,4 @@
+import { createContext } from 'react';
 import type { Todo } from '../types/Todo';
 
 export interface TodoContextType {
@@ -9,5 +10,3 @@ export interface TodoContextType {
 }
 
 export const TodoContext = createContext<TodoContextType | undefined>(undefined);
-
-import { createContext } from 'react';
