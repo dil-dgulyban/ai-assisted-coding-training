@@ -4,11 +4,11 @@ import { render, screen } from '@testing-library/react';
 // TodoProvider mocked via vi.mock
 import { TodoList } from '../components/TodoList/TodoList';
 import type { Todo } from '../types/Todo';
-import { useTodo } from '../contexts/TodoContext';
+import { useTodo } from '../hooks/useTodo';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 
 // Mock the useTodo hook
-vi.mock('../contexts/TodoContext', () => ({
+vi.mock('../hooks/useTodo', () => ({
   useTodo: vi.fn(),
 }));
 
@@ -22,8 +22,12 @@ describe('TodoList Component', () => {
 
   it('renders empty state when no todos exist', () => {
     // Mock the hook to return empty todos array
-    (useTodo as any).mockReturnValue({
+    (useTodo as jest.MockedFunction<typeof useTodo>).mockReturnValue({
       todos: [],
+      addTodo: vi.fn(),
+      editTodo: vi.fn(),
+      toggleTodoCompletion: vi.fn(),
+      deleteTodo: vi.fn(),
     });
 
     render(<TodoList onEditTodo={mockOnEditTodo} />);
@@ -52,10 +56,12 @@ describe('TodoList Component', () => {
     ];
 
     // Mock the hook to return todos
-    (useTodo as any).mockReturnValue({
+    (useTodo as jest.MockedFunction<typeof useTodo>).mockReturnValue({
       todos: mockTodos,
       toggleTodoCompletion: vi.fn(),
       deleteTodo: vi.fn(),
+      addTodo: vi.fn(),
+      editTodo: vi.fn(),
     });
 
     render(<TodoList onEditTodo={mockOnEditTodo} />);

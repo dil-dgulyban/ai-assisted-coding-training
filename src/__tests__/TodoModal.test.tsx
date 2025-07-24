@@ -2,11 +2,11 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { TodoModal } from '../components/TodoModal/TodoModal';
-import { useTodo } from '../contexts/TodoContext';
+import { useTodo } from '../hooks/useTodo';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 
 // Mock the useTodo hook
-vi.mock('../contexts/TodoContext', () => ({
+vi.mock('../hooks/useTodo', () => ({
   useTodo: vi.fn(),
 }));
 
@@ -17,9 +17,12 @@ describe('TodoModal Component', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
-    (useTodo as any).mockReturnValue({
+    (useTodo as jest.MockedFunction<typeof useTodo>).mockReturnValue({
       addTodo: mockAddTodo,
       editTodo: mockEditTodo,
+      todos: [],
+      toggleTodoCompletion: vi.fn(),
+      deleteTodo: vi.fn(),
     });
   });
 

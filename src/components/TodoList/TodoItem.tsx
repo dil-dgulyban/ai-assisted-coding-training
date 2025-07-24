@@ -9,7 +9,7 @@ import {
   Typography,
 } from '@mui/material';
 import type { Todo } from '../../types/Todo';
-import { useTodo } from '../../contexts/TodoContext';
+import { useTodo } from '../../hooks/useTodo';
 
 interface TodoItemProps {
   todo: Todo;

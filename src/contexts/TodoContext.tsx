@@ -1,16 +1,7 @@
-import React, { createContext, useContext, useState } from 'react';
+import React, { useState } from 'react';
 import type { Todo } from '../types/Todo';
 import { v4 as uuidv4 } from 'uuid';
-
-interface TodoContextType {
-  todos: Todo[];
-  addTodo: (title: string, description: string) => void;
-  editTodo: (id: string, updates: Partial<Todo>) => void;
-  toggleTodoCompletion: (id: string) => void;
-  deleteTodo: (id: string) => void;
-}
-
-const TodoContext = createContext<TodoContextType | undefined>(undefined);
+import { TodoContext } from './TodoContextType';
 
 export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [todos, setTodos] = useState<Todo[]>([]);
@@ -45,10 +36,4 @@ export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children
   );
 };
 
-export const useTodo = () => {
-  const context = useContext(TodoContext);
-  if (context === undefined) {
-    throw new Error('useTodo must be used within a TodoProvider');
-  }
-  return context;
-};
+// No re-exports to avoid react-refresh/only-export-components error

@@ -10,7 +10,7 @@ import {
   FormControlLabel,
   Checkbox,
 } from '@mui/material';
-import { useTodo } from '../../contexts/TodoContext';
+import { useTodo } from '../../hooks/useTodo';
 // Todo type is used in the context, no need to import it directly here
 
 interface TodoModalProps {
@@ -104,7 +104,7 @@ export const TodoModal: React.FC<TodoModalProps> = ({
               error={!!titleError}
               helperText={titleError}
               autoFocus
-              inputProps={{ 'data-testid': 'title-input' } as any}
+              inputProps={{ 'data-testid': 'title-input' }}
             />
             <TextField
               label="Description"
@@ -113,7 +113,7 @@ export const TodoModal: React.FC<TodoModalProps> = ({
               fullWidth
               multiline
               rows={4}
-              inputProps={{ 'data-testid': 'description-input' } as any}
+              inputProps={{ 'data-testid': 'description-input' }}
             />
             {mode === 'edit' && (
               <FormControlLabel
@@ -121,7 +121,7 @@ export const TodoModal: React.FC<TodoModalProps> = ({
                   <Checkbox
                     checked={completed}
                     onChange={e => setCompleted(e.target.checked)}
-                    inputProps={{ 'data-testid': 'completed-checkbox' } as any}
+                    inputProps={{ 'data-testid': 'completed-checkbox' }}
                   />
                 }
                 label="Mark as completed"
