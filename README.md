@@ -1,69 +1,78 @@
-# React + TypeScript + Vite
+# Todo App with Atlas UI
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+![CI Status](https://github.com/dil-asomlai/ai-assisted-coding-training/actions/workflows/ci.yml/badge.svg)
 
-Currently, two official plugins are available:
+A React-based Todo application built with TypeScript, Material UI, and Atlas UI components. This project demonstrates modern React development practices with proper state management, component architecture, and comprehensive testing.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## Expanding the ESLint configuration
+- ✅ Create, read, update, and delete todo items
+- ✅ Mark todos as completed
+- ✅ Responsive design with Material UI
+- ✅ TypeScript for type safety
+- ✅ React Context for state management
+- ✅ Comprehensive test coverage
+- ✅ Prettier and ESLint for code quality
+- ✅ Husky pre-commit hooks
+- ✅ GitHub Actions CI/CD workflow
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Quick Start
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# Clone the repository
+git clone https://github.com/dil-asomlai/ai-assisted-coding-training.git
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+# Navigate to project directory
+cd ai-assisted-coding-training
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# Install dependencies
+npm install
+
+# Start development server
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Visit `http://localhost:5173` to view the app.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Available Scripts
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- `npm run dev` - Start development server
+- `npm run build` - Build production-ready app
+- `npm run lint` - Run ESLint to fix code issues
+- `npm run format` - Format code with Prettier
+- `npm run test` - Run tests
+- `npm run preview` - Preview production build locally
+
+## Project Structure
+
+The project follows a feature-based organization:
+
 ```
+src/
+├── __tests__/                   # Test files
+├── assets/                      # Media assets
+├── components/                  # React components
+├── contexts/                    # React contexts
+├── providers/                   # React providers
+├── types/                       # TypeScript type definitions
+└── ...
+```
+
+## AI Development Support
+
+This project is set up to work seamlessly with various AI coding assistants:
+
+- For comprehensive project documentation, see [AI.md](./AI.md)
+- For GitHub Copilot, see [.github/copilot/suggestions.json](./.github/copilot/suggestions.json)
+- For Cursor AI, see [.cursor](./.cursor)
+- For Claude Code, see [CLAUDE.md](./CLAUDE.md)
+
+These files contain helpful information for AI tools to understand the project's structure, patterns, and practices.
+
+## License
+
+MIT
+
+## Contributing
+
+Contributions are welcome! Please feel free to submit a Pull Request.
