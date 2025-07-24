@@ -1,57 +1,6 @@
 {
   "projectInfo": {
     "name": "Todo App with Atlas UI",
-    "description": "A React-based Todo application with TypeScript, Material UI, and Atlas UI components",
     "repositoryDocumentation": "AI.md"
-  },
-  "codebase": {
-    "mainProgrammingLanguages": ["TypeScript", "React"],
-    "frameworks": ["React", "Material UI", "Atlas UI"],
-    "buildTools": ["Vite"],
-    "testingTools": ["Vitest", "React Testing Library"]
-  },
-  "architecture": {
-    "patterns": {
-      "stateManagement": {
-        "description": "React Context is used for state management",
-        "keyFiles": ["src/contexts/TodoContext.tsx"]
-      },
-      "componentStructure": {
-        "description": "Components are organized by feature and follow React functional component pattern with TypeScript interfaces for props",
-        "keyFiles": [
-          "src/components/TodoList/TodoList.tsx",
-          "src/components/TodoModal/TodoModal.tsx"
-        ]
-      },
-      "styling": {
-        "description": "Material UI's sx prop is used for styling components",
-        "keyFiles": ["src/App.tsx", "src/components/TodoList/TodoItem.tsx"]
-      }
-    }
-  },
-  "codingConventions": {
-    "naming": {
-      "components": "PascalCase (e.g., TodoItem)",
-      "interfaces": "PascalCase with descriptive names (e.g., TodoItemProps)",
-      "functions": "camelCase descriptive verbs (e.g., addTodo, toggleTodoCompletion)"
-    },
-    "componentPattern": {
-      "description": "Functional components with explicit typing using React.FC<Props> pattern",
-      "example": "export const ComponentName: React.FC<Props> = ({ prop1, prop2 }) => { ... }"
-    },
-    "imports": {
-      "order": [
-        "React imports",
-        "External libraries",
-        "Internal components/utilities",
-        "Types/interfaces",
-        "Assets/styles"
-      ]
-    },
-    "testing": {
-      "pattern": "Component tests using describe/it blocks with React Testing Library",
-      "example": "describe('Component', () => { it('should render correctly', () => { ... }) })"
-    }
-  },
-  "detailedDocumentation": "For comprehensive documentation about the project structure, architecture, and development practices, please refer to the AI.md file at the root of the repository."
+  }
 }

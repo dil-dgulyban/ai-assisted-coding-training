@@ -1,44 +1,4 @@
 {
-  "engineVersion": "1.0.0",
   "projectName": "Todo App with Atlas UI",
-  "description": "A React-based Todo application with TypeScript, Material UI, and Atlas UI components",
-  "projectDocumentation": "AI.md",
-  "codebaseUnderstanding": {
-    "importantFiles": [
-      "src/App.tsx",
-      "src/contexts/TodoContext.tsx",
-      "src/components/TodoList/TodoList.tsx",
-      "src/components/TodoModal/TodoModal.tsx",
-      "src/types/Todo.ts",
-      "src/__tests__/TodoContext.test.tsx"
-    ],
-    "keyPatterns": [
-      {
-        "pattern": "React Context for state management",
-        "explanation": "TodoContext provides state management for the application",
-        "examples": ["src/contexts/TodoContext.tsx"]
-      },
-      {
-        "pattern": "Component structure",
-        "explanation": "React functional components with TypeScript interfaces for props",
-        "examples": ["src/components/TodoList/TodoItem.tsx", "src/components/TodoModal/TodoModal.tsx"]
-      },
-      {
-        "pattern": "Material UI styling",
-        "explanation": "Using Material UI's sx prop for styling components",
-        "examples": ["src/components/TodoList/TodoList.tsx"]
-      },
-      {
-        "pattern": "Testing with Vitest and React Testing Library",
-        "explanation": "Component tests using Vitest and React Testing Library",
-        "examples": ["src/__tests__/TodoItem.test.tsx"]
-      }
-    ]
-  },
-  "cursorPreferences": {
-    "suggestCodeEdits": true,
-    "suggestCompletions": true,
-    "analyzeDependencies": true
-  },
-  "referenceDocumentation": "Please see AI.md at the root of this repository for comprehensive documentation of the project structure, architecture, and development practices."
+  "projectDocumentation": "AI.md"
 }
