@@ -1,14 +1,14 @@
 import React from 'react';
-import { 
-  ListItem, 
-  ListItemText, 
-  ListItemSecondaryAction, 
+import {
+  ListItem,
+  ListItemText,
+  ListItemSecondaryAction,
   IconButton,
   Checkbox,
   Divider,
-  Typography 
+  Typography,
 } from '@mui/material';
-import { Todo } from '../../types/Todo';
+import type { Todo } from '../../types/Todo';
 import { useTodo } from '../../contexts/TodoContext';
 
 interface TodoItemProps {
@@ -28,15 +28,15 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, onEditClick }) => {
           borderLeft: todo.completed ? '4px solid green' : '4px solid transparent',
           '&:hover': {
             bgcolor: 'action.hover',
-            cursor: 'pointer'
-          }
+            cursor: 'pointer',
+          },
         }}
         onClick={() => onEditClick(todo)}
       >
         <Checkbox
           edge="start"
           checked={todo.completed}
-          onClick={(e) => {
+          onClick={e => {
             e.stopPropagation();
             toggleTodoCompletion(todo.id);
           }}
@@ -51,7 +51,7 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, onEditClick }) => {
               sx={{
                 textDecoration: todo.completed ? 'line-through' : 'none',
                 color: todo.completed ? 'text.secondary' : 'text.primary',
-                fontWeight: 500
+                fontWeight: 500,
               }}
             >
               {todo.title}
@@ -70,10 +70,10 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, onEditClick }) => {
           }
         />
         <ListItemSecondaryAction>
-          <IconButton 
-            edge="end" 
+          <IconButton
+            edge="end"
             aria-label="delete"
-            onClick={(e) => {
+            onClick={e => {
               e.stopPropagation();
               deleteTodo(todo.id);
             }}

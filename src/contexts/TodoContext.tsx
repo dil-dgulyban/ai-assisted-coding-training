@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState } from 'react';
-import { Todo } from '../types/Todo';
+import type { Todo } from '../types/Todo';
 import { v4 as uuidv4 } from 'uuid';
 
 interface TodoContextType {
@@ -14,7 +14,7 @@ const TodoContext = createContext<TodoContextType | undefined>(undefined);
 
 export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [todos, setTodos] = useState<Todo[]>([]);
-  
+
   const addTodo = (title: string, description: string) => {
     const newTodo: Todo = {
       id: uuidv4(),
@@ -25,23 +25,19 @@ export const TodoProvider: React.FC<{ children: React.ReactNode }> = ({ children
     };
     setTodos([...todos, newTodo]);
   };
-  
+
   const editTodo = (id: string, updates: Partial<Todo>) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, ...updates } : todo
-    ));
+    setTodos(todos.map(todo => (todo.id === id ? { ...todo, ...updates } : todo)));
   };
-  
+
   const toggleTodoCompletion = (id: string) => {
-    setTodos(todos.map(todo => 
-      todo.id === id ? { ...todo, completed: !todo.completed } : todo
-    ));
+    setTodos(todos.map(todo => (todo.id === id ? { ...todo, completed: !todo.completed } : todo)));
   };
-  
+
   const deleteTodo = (id: string) => {
     setTodos(todos.filter(todo => todo.id !== id));
   };
-  
+
   return (
     <TodoContext.Provider value={{ todos, addTodo, editTodo, toggleTodoCompletion, deleteTodo }}>
       {children}

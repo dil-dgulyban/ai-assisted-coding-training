@@ -1,14 +1,8 @@
-import React, { useState } from 'react';
-import { 
-  List, 
-  Paper, 
-  Typography, 
-  Box,
-  Alert
-} from '@mui/material';
+import React from 'react';
+import { List, Paper, Typography, Box, Alert } from '@mui/material';
 import { useTodo } from '../../contexts/TodoContext';
 import { TodoItem } from './TodoItem';
-import { Todo } from '../../types/Todo';
+import type { Todo } from '../../types/Todo';
 
 interface TodoListProps {
   onEditTodo: (todo: Todo) => void;
@@ -30,21 +24,17 @@ export const TodoList: React.FC<TodoListProps> = ({ onEditTodo }) => {
   }
 
   return (
-    <Paper 
-      sx={{ 
+    <Paper
+      sx={{
         mt: 3,
         borderRadius: 2,
-        overflow: 'hidden'
+        overflow: 'hidden',
       }}
       elevation={1}
     >
       <List disablePadding>
-        {todos.map((todo) => (
-          <TodoItem
-            key={todo.id}
-            todo={todo}
-            onEditClick={onEditTodo}
-          />
+        {todos.map(todo => (
+          <TodoItem key={todo.id} todo={todo} onEditClick={onEditTodo} />
         ))}
       </List>
     </Paper>

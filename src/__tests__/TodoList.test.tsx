@@ -1,15 +1,15 @@
-import React from 'react';
+// React is used implicitly
 import { render, screen } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { TodoProvider } from '../contexts/TodoContext';
+// userEvent not directly used in this test file
+// TodoProvider mocked via vi.mock
 import { TodoList } from '../components/TodoList/TodoList';
-import { Todo } from '../types/Todo';
+import type { Todo } from '../types/Todo';
 import { useTodo } from '../contexts/TodoContext';
 import { vi, describe, it, expect, beforeEach } from 'vitest';
 
 // Mock the useTodo hook
 vi.mock('../contexts/TodoContext', () => ({
-  useTodo: vi.fn()
+  useTodo: vi.fn(),
 }));
 
 describe('TodoList Component', () => {
@@ -23,11 +23,11 @@ describe('TodoList Component', () => {
   it('renders empty state when no todos exist', () => {
     // Mock the hook to return empty todos array
     (useTodo as any).mockReturnValue({
-      todos: []
+      todos: [],
     });
 
     render(<TodoList onEditTodo={mockOnEditTodo} />);
-    
+
     // Check for empty state message
     expect(screen.getByText(/No todos yet/i)).toBeInTheDocument();
   });
@@ -40,22 +40,22 @@ describe('TodoList Component', () => {
         title: 'Test Todo 1',
         description: 'Test Description 1',
         completed: false,
-        createdAt: new Date()
+        createdAt: new Date(),
       },
       {
         id: '2',
         title: 'Test Todo 2',
         description: 'Test Description 2',
         completed: true,
-        createdAt: new Date()
-      }
+        createdAt: new Date(),
+      },
     ];
 
     // Mock the hook to return todos
     (useTodo as any).mockReturnValue({
       todos: mockTodos,
       toggleTodoCompletion: vi.fn(),
-      deleteTodo: vi.fn()
+      deleteTodo: vi.fn(),
     });
 
     render(<TodoList onEditTodo={mockOnEditTodo} />);
