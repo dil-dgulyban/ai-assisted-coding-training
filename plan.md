@@ -3,14 +3,14 @@
 ## Task Overview
 | # | Task | Status | Dependencies |
 |---|------|--------|-------------|
-| 1 | Set up React project with required dependencies in a temp subfolder, then copy to current folder | DONE | None |
-| 2 | Configure Atlas UI components and styling | DONE | 1 |
-| 3 | Create basic app structure with responsive layout | TODO | 2 |
-| 4 | Implement todo state management | TODO | 3 |
-| 5 | Create todo list component | TODO | 4 |
-| 6 | Design and implement modal component for todos | TODO | 4 |
-| 7 | Implement create todo functionality | TODO | 5, 6 |
-| 8 | Implement edit todo functionality | TODO | 7 |
+| 1 | Set up React project with required dependencies in a temp subfolder, then copy to current folder | DONE   | None |
+| 2 | Configure Atlas UI components and styling | DONE   | 1 |
+| 3 | Create basic app structure with responsive layout | DONE   | 2 |
+| 4 | Implement todo state management | DONE   | 3 |
+| 5 | Create todo list component | DONE   | 4 |
+| 6 | Design and implement modal component for todos | DONE   | 4 |
+| 7 | Implement create todo functionality | DONE   | 5, 6 |
+| 8 | Implement edit todo functionality | IGNORE | 7 |
 
 ## Context
 User request: "Create a TODO app with Atlas UI components that allows users to list, add, and edit todos with a modal interface."

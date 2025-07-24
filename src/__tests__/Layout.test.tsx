@@ -30,7 +30,7 @@ describe('Layout Components', () => {
     render(<App />);
     expect(screen.getByRole('heading', { level: 1, name: /todo app/i })).toBeInTheDocument();
     expect(screen.getByText('Your Todos')).toBeInTheDocument();
-    expect(screen.getByText('Todo items will appear here soon.')).toBeInTheDocument();
+    expect(screen.getByText(/No todos yet/i)).toBeInTheDocument();
     
     // Check if main elements exist
     expect(screen.getByRole('banner')).toBeInTheDocument(); // AppBar/Header
