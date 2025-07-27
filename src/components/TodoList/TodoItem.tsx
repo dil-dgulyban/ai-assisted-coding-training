@@ -1,13 +1,5 @@
 import React from 'react';
-import {
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
-  IconButton,
-  Checkbox,
-  Divider,
-  Typography,
-} from '@mui/material';
+import { ListItem, ListItemText, IconButton, Checkbox, Divider, Typography } from '@mui/material';
 import type { Todo } from '../../types/Todo';
 import { useTodo } from '../../hooks/useTodo';
 
@@ -32,6 +24,18 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, onEditClick }) => {
           },
         }}
         onClick={() => onEditClick(todo)}
+        secondaryAction={
+          <IconButton
+            edge="end"
+            aria-label="delete"
+            onClick={e => {
+              e.stopPropagation();
+              deleteTodo(todo.id);
+            }}
+          >
+            Delete
+          </IconButton>
+        }
       >
         <Checkbox
           edge="start"
@@ -69,18 +73,6 @@ export const TodoItem: React.FC<TodoItemProps> = ({ todo, onEditClick }) => {
             </Typography>
           }
         />
-        <ListItemSecondaryAction>
-          <IconButton
-            edge="end"
-            aria-label="delete"
-            onClick={e => {
-              e.stopPropagation();
-              deleteTodo(todo.id);
-            }}
-          >
-            Delete
-          </IconButton>
-        </ListItemSecondaryAction>
       </ListItem>
       <Divider />
     </>
