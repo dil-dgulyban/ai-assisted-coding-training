@@ -1,5 +1,28 @@
 # Planning Guide Reference
 
+## Table of Contents
+
+- [Planning Guide Reference](#planning-guide-reference)
+  - [Purpose](#purpose)
+  - [Planning Process](#planning-process)
+    - [Creating the Plan File](#1-creating-the-plan-file)
+    - [Gather Context and Information](#2-gather-context-and-information)
+    - [Create Task List](#3-create-task-list)
+    - [Define Execution Strategy](#4-define-execution-strategy)
+  - [Plan.md Structure](#planmd-structure)
+    - [Context](#context)
+    - [Task List](#task-list)
+    - [Execution Guide](#execution-guide)
+  - [Task Best Practices](#task-best-practices)
+    - [Task Definition](#task-definition)
+    - [Dependency Management](#dependency-management)
+    - [Code Snippets](#code-snippets)
+    - [Verification](#verification)
+  - [Creating a New Plan](#creating-a-new-plan)
+  - [Plan Examples](#plan-examples)
+    - [Example 1: Feature Implementation](#example-1-feature-implementation)
+    - [Example 2: Bug Fix](#example-2-bug-fix)
+
 ## Purpose
 
 This document provides a standardized approach for creating effective plan.md files for both AI and human developers. Following this guide ensures consistent planning, execution, and verification of any development task.
@@ -8,7 +31,7 @@ This document provides a standardized approach for creating effective plan.md fi
 
 ### 1. Creating the Plan File
 
-- Create a new file named `plan.md` in the repository root
+- Create a new file named `implementation-plams/<task>-plan.md` in the repository root
 - Use this as the single source of truth for planning and execution
 - Always start by adding a descriptive title for the plan at the top
 - Use Markdown formatting for clear structure and readability
@@ -16,7 +39,7 @@ This document provides a standardized approach for creating effective plan.md fi
 ### 2. Gather Context and Information
 
 - Collect all user requirements and project context
-- Extract relevant details from CLAUDE.md repository index
+- Extract relevant details from AI.md repository index
 - Identify related components in the repository
 - Determine constraints, dependencies, and requirements
 - Document this information in the Context section of plan.md
@@ -60,14 +83,14 @@ Structured as a series of tasks with consistent format:
 ```[language]
 // Example code structure or pattern to follow
 // Include only when applicable to make implementation clearer
-````
+```
 
 **Verification**:
 [Specific steps to verify this task was completed successfully]
-
-```
+````
 
 ### Execution Guide
+
 ```
 
 Execution process:
@@ -88,6 +111,7 @@ Execution process:
 ## Task Best Practices
 
 ### Task Definition
+
 - Make tasks atomic and focused on a single objective
 - Ensure tasks have clear completion criteria
 - Avoid tasks that are too large or vague
@@ -95,12 +119,14 @@ Execution process:
 - Add relevant code snippets when applicable
 
 ### Dependency Management
+
 - Minimize dependencies between tasks when possible
 - Clearly document all dependencies
 - Consider creating task chains that can be executed in parallel
 - Design for maximum concurrent execution
 
 ### Code Snippets
+
 - Include relevant code snippets to illustrate implementation patterns
 - Use snippets to show structure, API usage, or integration points
 - Keep snippets concise and focused on the key aspects of the task
@@ -109,6 +135,7 @@ Execution process:
 - For complex tasks, consider before/after snippets to clarify changes
 
 ### Verification
+
 - Include specific verification steps for each task
 - Define expected outcomes and success criteria
 - Consider edge cases in verification
@@ -127,7 +154,8 @@ When a user requests assistance with a task, follow these steps to create a plan
 
 ## Plan Examples
 
-### Example: Feature Implementation
+### Example 1: Feature Implementation
+
 ```
 
 # Plan: Add User Profile Export Feature
@@ -211,8 +239,9 @@ PDF downloads successfully when complete
 
 ```
 
-### Example: Bug Fix
-```
+### Example 2: Bug Fix
+
+````
 
 # Plan: Fix Workflow State Transition Error
 
@@ -304,6 +333,4 @@ Issue correctly moves to discarded state
 
 3. Continue to the next eligible task until all tasks are completed.
 
-```
-
-```
+````
