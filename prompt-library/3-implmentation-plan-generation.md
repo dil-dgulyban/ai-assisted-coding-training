@@ -30,10 +30,10 @@ Instructions
    - Be specific about logic, components, files, or APIs involved
    - Ensure the prompt is self-contained and ready to use by an AI agent
    - Use @planning-guide.md
-4. Optional: Post the Prompt to the Ticket
+4. Post the Prompt to the Ticket
    - Ask if the user wants to do this step. Execute only if stated so.
    - Post the generated prompt as a comment on the related issue or ticket. Consider using MCP. It must be added to the ticket or issue
-   - Prefix the comment with a line including: `**[AI generated implementation prompt]**` to indicate the source.
+   - Prefix the comment with a line including: `**[AI generated] [Implementation prompt]**` to indicate the source.
 
 ⸻
 

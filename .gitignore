@@ -55,3 +55,4 @@ bin/
 .DS_Store
 
 tmp/*.md
+!tmp/AIADT-11-prompt-history.md
