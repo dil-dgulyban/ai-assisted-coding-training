@@ -2,8 +2,8 @@ You are reviewing answers provided to a set of previously listed open questions 
 
 ## Answers:
 
-    1. [Question 1]
-    Answer: [Answer 1]
+1.  <QUESTION_1>
+    Answer: <ANSWER_1>
     2 ...
 
 ⸻
