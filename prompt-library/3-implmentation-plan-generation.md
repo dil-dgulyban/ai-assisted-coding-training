@@ -16,7 +16,9 @@ Input
 ⸻
 
 Instructions
-
+0. Check MCP Access
+   - Confirm whether an active Atlassian MCP connections is available.
+   - If no MCP connection is detected, terminate the task immediately and return: "No MCP connection. Execution stopped."
 1. Understand the Request
    - Identify the main feature or bug fix
    - Extract key technical details: inputs, outputs, edge cases, dependencies, constraints
@@ -31,7 +33,6 @@ Instructions
    - Ensure the prompt is self-contained and ready to use by an AI agent
    - Use @planning-guide.md
 4. Post the Prompt to the Ticket
-   - Ask if the user wants to do this step. Execute only if stated so.
    - Post the generated prompt as a comment on the related issue or ticket. Consider using MCP. It must be added to the ticket or issue
    - Prefix the comment with a line including: `**[AI generated] [Implementation prompt]**` to indicate the source.
 
