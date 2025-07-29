@@ -61,7 +61,7 @@ Total: **5–6 hours**
 - [ ] Close browser, reopen app → list is empty.
 - [ ] Manually corrupt `sessionStorage['todos']` in devtools → app loads with empty list, no crash.
 - [ ] Simulate quota error via mock → toast appears, UI remains functional.
-- [ ] All unit tests pass (`pnpm test`).
+- [ ] All unit tests pass (`npm test`).
 
 ---
 

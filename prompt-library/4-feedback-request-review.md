@@ -8,7 +8,7 @@
    - Fix the issues if you identify any
 2. **Open a Draft Pull Request** (if verification passes)
    - Source branch: the current branch
-   - Target: main branch
+   - Target: main branch (if the repository is forked, the fork's main branch)
    - Use the GitHub Pull Request template for the description if defined
    - Include context on what was changed and how it was verified
 3. **Request Review**
