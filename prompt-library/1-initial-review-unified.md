@@ -9,6 +9,9 @@ You are a professional fullstack engineer assigned to review and assess readines
 
 ## Tasks:
 
+0. **Check MCP Access**
+      - Confirm whether an active Atlassian MCP connections is available.
+      - If no MCP connection is detected, terminate the task immediately and return: "No MCP connection. Execution stopped."
 1. **Retrieve and read content**:
    - For GitHub (if provided): Use MCP to retrieve and read the GitHub issue content
    - For Jira (if provided): Use Atlassian MCP to retrieve and read the Jira ticket content

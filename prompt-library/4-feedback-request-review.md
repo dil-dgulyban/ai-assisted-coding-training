@@ -1,4 +1,11 @@
-1. **Verify the Changes:** Use the known verification methods (e.g., tests, manual steps, QA guidelines) to confirm that the changes are correct and working as intended.
+0. **Verify MCP Access**
+
+- Confirm that the GitHub MCP connection is active
+- If no connection is available, terminate immediately and return: "No MCP connection. Cannot open pull request."
+
+1. **Verify the Changes:**
+   - Use the known verification methods (e.g., tests, manual steps, QA guidelines) to confirm that the changes are correct and working as intended
+   - Fix the issues if you identify any
 2. **Open a Draft Pull Request** (if verification passes)
    - Source branch: the current branch
    - Target: main branch
