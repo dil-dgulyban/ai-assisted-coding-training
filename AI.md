@@ -27,28 +27,37 @@ The application features a responsive design, follows modern React practices wit
 
 ## Project Structure
 
-### Root Directory Organization
-
 ```
 /
-├── .github/workflows/    # GitHub Actions workflows
-├── .husky/               # Git hooks for pre-commit checks
-├── dist/                 # Build output (generated)
-├── node_modules/         # Dependencies (not committed)
-├── public/               # Static assets
-├── src/                  # Source code
-│   ├── __tests__/        # Test files
-│   ├── assets/           # Media assets
-│   ├── components/       # React components
-│   ├── contexts/         # React contexts
-│   ├── providers/        # React providers
-│   └── types/            # TypeScript type definitions
-├── .eslintrc.js          # ESLint configuration
-├── .prettierrc           # Prettier configuration
-├── package.json          # Dependencies and scripts
-├── tsconfig.json         # TypeScript configuration
-├── vite.config.ts        # Vite configuration
-└── vitest.config.ts      # Vitest configuration
+├── .github/                 # GitHub metadata
+│   └── workflows/           # CI workflows
+├── .husky/                  # Git hooks for pre-commit checks
+├── .cursor/                 # Cursor AI configuration (optional)
+├── implementation-plans/    # Architecture & feature proposals
+├── product/                 # Product documentation
+├── prompt-library/          # AI prompt examples & workflows
+├── public/                  # Static assets served by Vite
+├── src/                     # Source code
+│   ├── __tests__/           # Unit & component tests
+│   ├── assets/              # Media assets
+│   ├── components/          # React components
+│   ├── contexts/            # React contexts (state management)
+│   ├── hooks/               # Custom React hooks
+│   ├── providers/           # Context providers & theming
+│   ├── types/               # TypeScript type definitions
+│   └── ...                  # Other source files
+├── tmp/                     # Temporary generated files & prompt history
+├── AI.md                    # Comprehensive project documentation
+├── CLAUDE.md                # Claude-specific guidance
+├── README.md                # Quick project overview
+├── eslint.config.js         # ESLint configuration
+├── index.html               # HTML entry point for Vite
+├── package.json             # Dependencies and scripts
+├── tsconfig.json            # Base TypeScript configuration
+├── tsconfig.app.json        # App-specific TypeScript config
+├── tsconfig.node.json       # Node-specific TypeScript config
+├── vite.config.ts           # Vite build configuration
+└── vitest.config.ts         # Vitest test runner configuration
 ```
 
 ### Key Source Code Organization
