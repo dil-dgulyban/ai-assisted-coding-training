@@ -1,6 +1,6 @@
 # Todo App with Atlas UI
 
-![CI Status](https://github.com/dil-asomlai/ai-assisted-coding-training/actions/workflows/ci.yml/badge.svg)
+![CI Status](https://github.com/dil-dgulyban/ai-assisted-coding-training/actions/workflows/ci.yml/badge.svg)
 
 A React-based Todo application built with TypeScript, Material UI, and Atlas UI components. This project demonstrates modern React development practices with proper state management, component architecture, and comprehensive testing.
 
@@ -20,7 +20,7 @@ A React-based Todo application built with TypeScript, Material UI, and Atlas UI 
 
 ```bash
 # Clone the repository
-git clone https://github.com/dil-asomlai/ai-assisted-coding-training.git
+git clone https://github.com/dil-dgulyban/ai-assisted-coding-training.git
 
 # Navigate to project directory
 cd ai-assisted-coding-training
